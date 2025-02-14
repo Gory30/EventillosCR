@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventillos CR - Conciertos</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <style>
+        body {
+            background-color: blanchedalmond;
+            padding-top: 70px; /* Para evitar que el contenido se solape con la barra de navegación fija */
+        }
+        .navbar {
+            margin-bottom: 20px;
+        }
+        .card {
+            margin-bottom: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        .btn-info {
+            background-color: #17a2b8;
+            border-color: #17a2b8;
+        }
+        .btn-info:hover {
+            background-color: #138496;
+            border-color: #117a8b;
+        }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        .footer a {
+            color: #17a2b8;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: #138496;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Eventillos CR</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li class="nav-item"><a href="conciertos.html" class="nav-link">Conciertos</a></li>
+                    <li class="nav-item"><a href="deportes.html" class="nav-link">Deportes</a></li>
+                    <li class="nav-item"><a href="teatro.html" class="nav-link">Teatro</a></li>
+                    <li class="nav-item"><a href="contacto.html" class="nav-link">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mt-5">
+        <h1 class="text-center mb-4">Conciertos Disponibles en Costa Rica</h1>
+
+        <div class="row">
+            <!-- The Score -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="imagenes/The Score.jpg" class="card-img-top" alt="The Score">
+                    <div class="card-body">
+                        <h5 class="card-title">The Score</h5>
+                        <p class="card-text"><strong>Fecha:</strong> 22 de Agosto 2023</p>
+                        <p class="card-text"><strong>Hora:</strong> 5:00 pm</p>
+                        <p class="card-text"><strong>Lugar:</strong> San José - Estadio Nacional</p>
+                        <p class="card-text">The Score hace su visita a Costa Rica para brindarnos la mejor música.</p>
+                        <a href="thescore.html" class="btn btn-info">Comprar Boleto</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shakira -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="imagenes/shakira.jpg" class="card-img-top" alt="Shakira">
+                    <div class="card-body">
+                        <h5 class="card-title">Shakira</h5>
+                        <p class="card-text"><strong>Fecha:</strong> 19 de Setiembre 2023</p>
+                        <p class="card-text"><strong>Hora:</strong> 6:30 pm</p>
+                        <p class="card-text"><strong>Lugar:</strong> San José - Estadio Nacional</p>
+                        <p class="card-text">Shakira regresa para darnos un gran espectáculo con sus nuevas canciones.</p>
+                        <a href="shakira.html" class="btn btn-info">Comprar Boleto</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AC/DC -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="imagenes/acdc.jpg" class="card-img-top" alt="AC/DC">
+                    <div class="card-body">
+                        <h5 class="card-title">AC/DC</h5>
+                        <p class="card-text"><strong>Fecha:</strong> 2 de Diciembre 2023</p>
+                        <p class="card-text"><strong>Hora:</strong> 2:00 pm</p>
+                        <p class="card-text"><strong>Lugar:</strong> San José - Estadio Nacional</p>
+                        <p class="card-text">AC/DC llega para su última gira por todo el mundo y llega aquí a Costa Rica.</p>
+                        <a href="acdc.html" class="btn btn-info">Comprar Boleto</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bella Poarch -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="imagenes/Bella_Poarch_smiling.jpg" class="card-img-top" alt="Bella Poarch">
+                    <div class="card-body">
+                        <h5 class="card-title">Bella Poarch</h5>
+                        <p class="card-text"><strong>Fecha:</strong> 10 de Enero 2024</p>
+                        <p class="card-text"><strong>Hora:</strong> 7:30 pm</p>
+                        <p class="card-text"><strong>Lugar:</strong> Belén - Centro de Eventos Pedregal</p>
+                        <p class="card-text">Bella Poarch hace su primera gira y estará aquí en Costa Rica.</p>
+                        <a href="bellapo.html" class="btn btn-info">Comprar Boleto</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Future -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="imagenes/Future_-_Openair_Frauenfeld_2019_01_(cropped).jpg" class="card-img-top" alt="Future">
+                    <div class="card-body">
+                        <h5 class="card-title">Future</h5>
+                        <p class="card-text"><strong>Fecha:</strong> 15 de Enero 2024</p>
+                        <p class="card-text"><strong>Hora:</strong> 9:00 pm</p>
+                        <p class="card-text"><strong>Lugar:</strong> Belén - Centro de Eventos Pedregal</p>
+                        <p class="card-text">Future llega por primera vez a Costa Rica. ¡No te lo pierdas!</p>
+                        <a href="future.html" class="btn btn-info">Comprar Boleto</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Weeknd -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="imagenes/The-Weeknd.jpg" class="card-img-top" alt="The Weeknd">
+                    <div class="card-body">
+                        <h5 class="card-title">The Weeknd</h5>
+                        <p class="card-text"><strong>Fecha:</strong> 1 de Febrero 2024</p>
+                        <p class="card-text"><strong>Hora:</strong> 3:30 pm</p>
+                        <p class="card-text"><strong>Lugar:</strong> Belén - Centro de Eventos Pedregal</p>
+                        <p class="card-text">The Weeknd, un increíble artista, llega a Costa Rica. ¡No te lo pierdas!</p>
+                        <a href="thewe.html" class="btn btn-info">Comprar Boleto</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p class="small">Derechos Reservados - Eventillos CR - Programación 3 (2023) | 
+                <a href="https://www.instagram.com" target="_blank">Instagram</a> | 
+                <a href="https://es-la.facebook.com" target="_blank">Facebook</a> | 
+                <a href="https://twitter.com/home?lang=es" target="_blank">Twitter</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

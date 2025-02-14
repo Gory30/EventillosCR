@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Eventillos CR - Teatro</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+        <style>
+            body {
+                background-color: blanchedalmond;
+                padding-top: 70px; /* Para evitar que el contenido se solape con la barra de navegación fija */
+            }
+            .navbar {
+                margin-bottom: 20px;
+            }
+            .card {
+                margin-bottom: 20px;
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+            .card-img-top {
+                height: 200px;
+                object-fit: cover;
+            }
+            .btn-info {
+                background-color: #17a2b8;
+                border-color: #17a2b8;
+            }
+            .btn-info:hover {
+                background-color: #138496;
+                border-color: #117a8b;
+            }
+            .footer {
+                background-color: #343a40;
+                color: white;
+                padding: 20px 0;
+                margin-top: 40px;
+            }
+            .footer a {
+                color: #17a2b8;
+                text-decoration: none;
+            }
+            .footer a:hover {
+                color: #138496;
+            }
+        </style>
+    </head>
+    <body>
+
+    <div class="container mt-5">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">Eventillos CR</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a href="index.html" class="nav-link">Inicio</a></li>
+                        <li class="nav-item"><a href="conciertos.html" class="nav-link">Conciertos</a></li>
+                        <li class="nav-item"><a href="deportes.html" class="nav-link">Deportes</a></li>
+                        <li class="nav-item"><a href="teatro.html" class="nav-link">Teatro</a></li>
+                        <li class="nav-item"><a href="contacto.html" class="nav-link">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <h1 class="text-center my-5">Obras de Teatro en Costa Rica</h1>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <img class="card-img-top" src="imagenes/alejandro.jpg" alt="Alejandro Ricaño">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Alejandro Ricaño</h5>
+                        <p class="card-text">2 de Agosto 2023 - 11:00 am</p>
+                        <p class="card-text">Teatro Popular Melico Salazar</p>
+                        <a href="alejandro.html" class="btn btn-primary">Comprar Boleto</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img class="card-img-top" src="imagenes/angelica.jpg" alt="Angélica Lidell">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Angélica Lidell</h5>
+                        <p class="card-text">30 de Setiembre 2023 - 12:30 pm</p>
+                        <p class="card-text">Teatro Popular Melico Salazar</p>
+                        <a href="angelica.html" class="btn btn-primary">Comprar Boleto</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img class="card-img-top" src="imagenes/sonora san.jpg" alt="La Sonora Santanera">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">La Sonora Santanera</h5>
+                        <p class="card-text">5 de Octubre 2023 - 3:30 pm</p>
+                        <p class="card-text">Auditorio Nacional</p>
+                        <a href="sonora.html" class="btn btn-primary">Comprar Boleto</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img class="card-img-top" src="imagenes/jairo_tenores.jpg" alt="Jairo y Los Tenores">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Jairo y Los Tenores</h5>
+                        <p class="card-text">20 de Octubre 2023 - 1:00 pm</p>
+                        <p class="card-text">Auditorio Nacional</p>
+                        <a href="jairo.html" class="btn btn-primary">Comprar Boleto</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p class="small">Derechos Reservados - Eventillos CR - Programación 3 (2023) | 
+                <a href="https://www.instagram.com" target="_blank">Instagram</a> | 
+                <a href="https://es-la.facebook.com" target="_blank">Facebook</a> | 
+                <a href="https://twitter.com/home?lang=es" target="_blank">Twitter</a>
+            </p>
+        </div>
+    </footer>
+
+    </body>
+</html>

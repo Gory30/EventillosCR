@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventillos CR</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <style>
+        body {
+            background-color: cadetblue;
+        }
+        .navbar {
+            margin-bottom: 20px;
+        }
+        .carousel-item img {
+            height: 400px;
+            object-fit: cover;
+        }
+        .card {
+            margin-bottom: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        .filter-button {
+            margin: 5px;
+        }
+        #mensaje-no-eventos {
+            display: none;
+        }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        .footer a {
+            color: #17a2b8;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: #138496;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">Eventillos CR</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a href="index.html" class="nav-link">Inicio</a></li>
+                        <li class="nav-item"><a href="conciertos.html" class="nav-link">Conciertos</a></li>
+                        <li class="nav-item"><a href="deportes.html" class="nav-link">Deportes</a></li>
+                        <li class="nav-item"><a href="teatro.html" class="nav-link">Teatro</a></li>
+                        <li class="nav-item"><a href="contacto.html" class="nav-link">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mt-5 pt-4">
+        <h1 class="text-center mb-4">Eventos Disponibles en Costa Rica</h1>
+
+        <!-- Carrusel -->
+        <div id="carousel" class="carousel slide mb-5" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#carousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#carousel" data-bs-slide-to="2"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="imagenes/concierto.jpg" class="d-block w-100" alt="Concierto en Costa Rica">
+                    <div class="carousel-caption">
+                        <h3>Conciertos - Costa Rica</h3>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="imagenes/deportes.jpg" class="d-block w-100" alt="Deportes en Costa Rica">
+                    <div class="carousel-caption">
+                        <h3>Deportes - Costa Rica</h3>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="imagenes/OBRA DE TEATRO.jpg" class="d-block w-100" alt="Teatro en Costa Rica">
+                    <div class="carousel-caption">
+                        <h3>Teatro - Costa Rica</h3>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+
+        <!-- Filtros -->
+        <section class="mb-5">
+            <h2>Filtrar por Mes</h2>
+            <div class="mb-3">
+                <button class="btn btn-primary filter-button" data-filter="todo">Mostrar todos</button>
+                <button class="btn btn-secondary filter-button" data-filter="enero">Enero</button>
+                <button class="btn btn-secondary filter-button" data-filter="febrero">Febrero</button>
+                <button class="btn btn-secondary filter-button" data-filter="marzo">Marzo</button>
+                <button class="btn btn-secondary filter-button" data-filter="abril">Abril</button>
+                <button class="btn btn-secondary filter-button" data-filter="mayo">Mayo</button>
+                <button class="btn btn-secondary filter-button" data-filter="junio">Junio</button>
+                <button class="btn btn-secondary filter-button" data-filter="julio">Julio</button>
+                <button class="btn btn-secondary filter-button" data-filter="agosto">Agosto</button>
+                <button class="btn btn-secondary filter-button" data-filter="setiembre">Setiembre</button>
+                <button class="btn btn-secondary filter-button" data-filter="octubre">Octubre</button>
+                <button class="btn btn-secondary filter-button" data-filter="noviembre">Noviembre</button>
+                <button class="btn btn-secondary filter-button" data-filter="diciembre">Diciembre</button>
+            </div>
+
+            <h2>Filtrar por Ubicación</h2>
+            <div class="mb-3">
+                <button class="btn btn-primary filter-button" data-filter="todo">Mostrar todos</button>
+                <button class="btn btn-secondary filter-button" data-filter="sanjose">San José</button>
+                <button class="btn btn-secondary filter-button" data-filter="heredia">Heredia</button>
+                <button class="btn btn-secondary filter-button" data-filter="cartago">Cartago</button>
+                <button class="btn btn-secondary filter-button" data-filter="limon">Limón</button>
+                <button class="btn btn-secondary filter-button" data-filter="puntarenas">Puntarenas</button>
+                <button class="btn btn-secondary filter-button" data-filter="guanacaste">Guanacaste</button>
+                <button class="btn btn-secondary filter-button" data-filter="alajuela">Alajuela</button>
+            </div>
+        </section>
+        
+        <!-- Mensaje de no eventos -->
+        <div id="mensaje-no-eventos" class="alert alert-warning mt-3">No hay eventos disponibles para este filtro.</div>
+
+        <section class="row" id="elementosprincipales">
+            <!-- Conciertos -->
+            <div class="col-md-4 elemento" data-categoria="concierto" data-mes="agosto" data-lugar="sanjose">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">The Score</h5>
+                        <img src="imagenes/The Score.jpg" class="img-thumbnail" alt="The Score en concierto">
+                        <p class="card-text">22 de Agosto 2023 - 5:00 pm</p>
+                        <p class="card-text">San José - Estadio Nacional</p>
+                        <p class="card-text">The Score hace su visita a Costa Rica para brindarnos la mejor música.</p>
+                        <a href="thescore.html" class="btn btn-info">Comprar Boleto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 elemento" data-categoria="concierto" data-mes="setiembre" data-lugar="sanjose">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Shakira</h5>
+                        <img src="imagenes/shakira.jpg" class="img-thumbnail" alt="Shakira en concierto">
+                        <p class="card-text">19 de Setiembre 2023 - 6:30 pm</p>
+                        <p class="card-text">San José - Estadio Nacional</p>
+                        <p class="card-text">Shakira regresa para darnos un gran espectáculo con sus nuevas canciones.</p>
+                        <a href="shakira.html" class="btn btn-info">Comprar Boleto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 elemento" data-categoria="concierto" data-mes="diciembre" data-lugar="sanjose">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">AC/DC</h5>
+                        <img src="imagenes/acdc.jpg" class="img-thumbnail" alt="AC/DC en concierto">
+                        <p class="card-text">2 de Diciembre 2023 - 2:00 pm</p>
+                        <p class="card-text">San José - Estadio Nacional</p>
+                        <p class="card-text">AC/DC llega para su última gira por todo el mundo y llega aquí a Costa Rica.</p>
+                        <a href="acdc.html" class="btn btn-info">Comprar Boleto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 elemento" data-categoria="concierto" data-mes="enero" data-lugar="heredia">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Bella Poarch</h5>
+                        <img src="imagenes/Bella_Poarch_smiling.jpg" class="img-thumbnail" alt="Bella Poarch en concierto">
+                        <p class="card-text">10 de Enero 2024 - 7:30 pm</p>
+                        <p class="card-text">Belen - Centro de Eventos Pedregal</p>
+                        <p class="card-text">Bella Poarch hace su primera gira y estará aquí en Costa Rica.</p>
+                        <a href="bellapo.html" class="btn btn-info">Comprar Boleto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 elemento" data-categoria="concierto" data-mes="enero" data-lugar="heredia">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Future</h5>
+                        <img src="imagenes/Future_-_Openair_Frauenfeld_2019_01_(cropped).jpg" class="img-thumbnail" alt="Future en concierto">
+                        <p class="card-text">15 de Enero 2024 - 9:00 pm</p>
+                        <p class="card-text">Belen - Centro de Eventos Pedregal</p>
+                        <p class="card-text">Future llega por primera vez a Costa Rica, no te lo pierdas.</p>
+                        <a href="future.html" class="btn btn-info">Comprar Boleto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 elemento" data-categoria="concierto" data-mes="febrero" data-lugar="heredia">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">The Weeknd</h5>
+                        <img src="imagenes/The-Weeknd.jpg" class="img-thumbnail" alt="The Weeknd en concierto">
+                        <p class="card-text">1 de Febrero 2024 - 3:30 pm</p>
+                        <p class="card-text">Belen - Centro de Eventos Pedregal</p>
+                        <p class="card-text">The Weeknd, un increíble artista, llega a Costa Rica, no te lo pierdas.</p>
+                        <a href="thewe.html" class="btn btn-info">Comprar Boleto</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Deportes -->
+            <div class="col-md-4 elemento" data-categoria="deporte" data-mes="agosto" data-lugar="guanacaste">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Triatlón BCR</h5>
+                        <img src="imagenes/triatlon2.jpg" class="img-thumbnail" alt="Triatlón en Costa Rica">
+                        <p class="card-text">29 de Agosto 2023 - 9:00 am</p>
+                        <p class="card-text">Guanacaste - El Coco</p>
+                        <p class="card-text">Triatlón increíble patrocinado por el BCR.</p>
+                        <a href="triatlon.html" class="btn btn-info">Comprar Boleto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 elemento" data-categoria="deporte" data-mes="setiembre" data-lugar="puntarenas">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Ciclismo BN</h5>
+                        <img src="imagenes/triatrlon.png" class="img-thumbnail" alt="Ciclismo en Costa Rica">
+                        <p class="card-text">3 de Setiembre 2023 - 12:30 pm</p>
+                        <p class="card-text">Puntarenas - Paseo de los Turistas</p>
+                        <p class="card-text">Ciclismo a toda velocidad patrocinado por el Banco Nacional.</p>
+                        <a href="ciclismo.html" class="btn btn-info">Comprar Boleto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 elemento" data-categoria="deporte" data-mes="setiembre" data-lugar="sanjose">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Saprissa vs Heredia</h5>
+                        <img src="imagenes/herediano-saprissa.jpg_242310155.jpg" class="img-thumbnail" alt="Partido de fútbol">
+                        <p class="card-text">20 de Setiembre 2023 - 4:00 pm</p>
+                        <p class="card-text">San José - Estadio Nacional</p>
+                        <p class="card-text">El Clásico de Costa Rica está por llegar.</p>
+                        <a href="sahe.html" class="btn btn-info">Comprar Boleto</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Teatro -->
+            <div class="col-md-4 elemento" data-categoria="teatro" data-mes="agosto" data-lugar="sanjose">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Alejandro Ricaño</h5>
+                        <img src="imagenes/alejandro.jpg" class="img-thumbnail" alt="Alejandro Ricaño en teatro">
+                        <p class="card-text">2 de Agosto 2023 - 11:00 am</p>
+                        <p class="card-text">San José - Teatro Popular Melico Salazar</p>
+                        <p class="card-text">Si quieres algo de humor, ven y ríete con Alejandro.</p>
+                        <a href="alejandro.html" class="btn btn-info">Comprar Boleto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 elemento" data-categoria="teatro" data-mes="setiembre" data-lugar="sanjose">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Angélica Lidell</h5>
+                        <img src="imagenes/angelica.jpg" class="img-thumbnail" alt="Angélica Lidell en teatro">
+                        <p class="card-text">30 de Setiembre 2023 - 12:30 pm</p>
+                        <p class="card-text">San José - Teatro Popular Melico Salazar</p>
+                        <p class="card-text">Si quieres ver la experiencia del arte dramático, ven a ver a Angélica Lidell.</p>
+                        <a href="angelica.html" class="btn btn-info">Comprar Boleto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 elemento" data-categoria="teatro1" data-mes="octubre" data-lugar="sanjose">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">La Sonora Santanera</h5>
+                        <img class="img-thumbnail" src="imagenes/sonora san.jpg">
+                        <p class="card-text">5 de Octubre 2023</p>
+                        <p class="card-text">3:30 pm</p>
+                        <p class="card-text">San Jose - Auditorio Nacional</p>
+                        <p class="card-text">Una de las agrupaciones mexicanas más importantes y famosas de la música tropical mexicana aqui en Costa Rica</p>
+                        <p class="card-text">Compra Ya</p>
+                        <a href="sonora.html" class="btn btn-info">Comprar Boleto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 elemento" data-categoria="teatro1" data-mes="octubre" data-lugar="sanjose">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Jairo y Los Tenores</h5>
+                        <img class="img-thumbnail" src="imagenes/jairo_tenores.jpg">
+                        <p class="card-text">20 de Octubre 2023</p>
+                        <p class="card-text">1:00 pm</p>
+                        <p class="card-text">San Jose - Auditorio Nacional</p>
+                        <p class="card-text">Una reunión de grandes voces para celebrar a las madres ticas</p>
+                        <p class="card-text">Compra Ya</p>
+                        <a href="jairo.html" class="btn btn-info">Comprar Boleto</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p class="small">Derechos Reservados - Eventillos CR - Programación 3 (2023) | 
+                <a href="https://www.instagram.com" target="_blank">Instagram</a> | 
+                <a href="https://es-la.facebook.com" target="_blank">Facebook</a> | 
+                <a href="https://twitter.com/home?lang=es" target="_blank">Twitter</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const filtrarBotones = document.querySelectorAll(".filter-button");
+    const mensajeNoEventos = document.getElementById("mensaje-no-eventos");
+
+    filtrarBotones.forEach(button => {
+        button.addEventListener("click", function () {
+            const filtrarValor = this.getAttribute("data-filter");
+
+            // Determinar si el filtro es por mes o por ubicación
+            const esFiltroMes = this.parentElement.previousElementSibling?.textContent.includes("Mes");
+
+            const tipoFiltro = esFiltroMes ? "data-mes" : "data-lugar";
+
+            // Ocultar todos los elementos primero
+            document.querySelectorAll(".elemento").forEach(element => {
+                element.style.display = "none";
+            });
+
+            // Mostrar los elementos que coinciden con el filtro
+            const elementosFiltrados = document.querySelectorAll(`.elemento[${tipoFiltro}="${filtrarValor}"]`);
+            if (filtrarValor === "todo") {
+                document.querySelectorAll(".elemento").forEach(element => {
+                    element.style.display = "block";
+                });
+            } else if (elementosFiltrados.length > 0) {
+                elementosFiltrados.forEach(element => {
+                    element.style.display = "block";
+                });
+            }
+
+            // Mostrar mensaje si no hay eventos
+            const eventosVisibles = document.querySelectorAll('.elemento[style="display: block;"]').length;
+            mensajeNoEventos.style.display = eventosVisibles === 0 ? "block" : "none";
+
+            // Activar botón seleccionado
+            filtrarBotones.forEach(btn => btn.classList.remove("active"));
+            this.classList.add("active");
+        });
+    });
+});
+    </script>
+
+    </body>
+</html>

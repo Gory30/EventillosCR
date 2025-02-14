@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventillos CR - Triatlon BCR</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <style>
+        body {
+            background-color: cadetblue;
+        }
+        .navbar {
+            margin-bottom: 20px;
+        }
+        .carrito-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .carrito-item button {
+            margin-left: 10px;
+        }
+        #total {
+            font-size: 1.2em;
+            font-weight: bold;
+            background-color: azure;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .container2 {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .metodo-pago {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Eventillos CR</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li class="nav-item"><a href="conciertos.html" class="nav-link">Conciertos</a></li>
+                    <li class="nav-item"><a href="deportes.html" class="nav-link">Deportes</a></li>
+                    <li class="nav-item"><a href="teatro.html" class="nav-link">Teatro</a></li>
+                    <li class="nav-item"><a href="contacto.html" class="nav-link">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mt-5 pt-4">
+        <h1 class="text-center">Ciclismo BN</h1>
+
+        <div class="row">
+            <div class="col-md-4">
+                <img src="imagenes/triatrlon.png" class="img-fluid rounded" alt="Shakira en concierto">
+            </div>
+            <div class="col-md-8">
+                <div class="text-bg-light p-3 rounded">
+                    <p><strong>Fecha:</strong> 3 de Setiembre 2023</p>
+                    <p><strong>Hora:</strong> 12:30 pm</p>
+                    <p><strong>Lugar:</strong> Puntarenas - Paseo de los Turistas</p>
+                    <br>
+                    <p><strong>Entradas:</strong></p>
+                    <ul class="list-group">
+                        <li class="list-group-item">Entrada Mayor de 18 Años: ₡15.000</li>
+                        <li class="list-group-item">Entrada General: ₡10.000</li>
+                        <li class="list-group-item">Entrada VIP: ₡26.000</li>
+                    </ul>
+                    <br>
+                    <p><strong>*IMPORTANTE*</strong></p>
+                    <p>La Entrada General permite el ingreso de menores de edad mayores de 12 años. No se aceptan menores de 12 años.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Selección de Boletos -->
+        <h2 class="mt-4">Seleccione su Boleto</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Entrada Mayor de 18 Años</h5>
+                        <p class="card-text">₡15.000</p>
+                        <button class="btn btn-primary" onclick="agregaralcarrito('Entrada Mayor de 18 Años', 15000)">Agregar al Carrito</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Entrada General</h5>
+                        <p class="card-text">₡10.000</p>
+                        <button class="btn btn-primary" onclick="agregaralcarrito('Entrada General', 10000)">Agregar al Carrito</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Entrada VIP</h5>
+                        <p class="card-text">₡26.000</p>
+                        <button class="btn btn-primary" onclick="agregaralcarrito('Entrada VIP', 26000)">Agregar al Carrito</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carrito -->
+        <h2 class="mt-4">Carrito</h2>
+        <ul id="carrito" class="list-group"></ul>
+        <br>
+        <p id="total">Total a pagar: ₡0.00</p>
+
+        <!-- Formulario de Confirmación de Compra -->
+        <h2 class="mt-4"><b>Formulario de Confirmación de Compra</b></h2>
+        <form id="formulario-compra" class="was-validated">
+            <div class="mb-3">
+                <label class="form-label">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" placeholder="Ingrese su Nombre" required>
+                <div class="invalid-feedback">Por favor, ingrese su nombre.</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Apellido:</label>
+                <input type="text" class="form-control" id="apellido" placeholder="Ingrese su Apellido" required>
+                <div class="invalid-feedback">Por favor, ingrese su apellido.</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Correo:</label>
+                <input type="email" class="form-control" id="correo" placeholder="Ingrese su Correo" required>
+                <div class="invalid-feedback">Por favor, ingrese un correo válido.</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Teléfono:</label>
+                <input type="tel" class="form-control" id="telefono" placeholder="Ingrese su Número de Teléfono" required>
+                <div class="invalid-feedback">Por favor, ingrese su número de teléfono.</div>
+            </div>
+
+            <!-- Método de Pago -->
+            <div class="mb-3">
+                <label class="form-label">Método de Pago:</label>
+                <select class="form-control" id="metodo-pago" required onchange="mostrarCamposPago()">
+                    <option value="">Seleccione un método de pago</option>
+                    <option value="tarjeta">Tarjeta</option>
+                    <option value="efectivo">Efectivo</option>
+                    <option value="sinpe">SINPE Móvil</option>
+                </select>
+                <div class="invalid-feedback">Por favor, seleccione un método de pago.</div>
+            </div>
+
+            <!-- Campos de Tarjeta -->
+            <div id="tarjeta" class="metodo-pago">
+                <div class="mb-3">
+                    <label class="form-label">Número de Tarjeta:</label>
+                    <input type="text" class="form-control" id="numero-tarjeta" placeholder="Ingrese el número de tarjeta" maxlength="16">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Fecha de Expiración:</label>
+                    <input type="month" class="form-control" id="fecha-expiracion">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">CVV:</label>
+                    <input type="text" class="form-control" id="cvv" placeholder="Ingrese el CVV" maxlength="3">
+                </div>
+            </div>
+
+            <!-- Campos de Efectivo -->
+            <div id="efectivo" class="metodo-pago">
+                <div class="mb-3">
+                    <label class="form-label">Monto con el que pagará:</label>
+                    <input type="number" class="form-control" id="monto-efectivo" placeholder="Ingrese el monto">
+                </div>
+                <p id="vuelto" class="text-success"></p>
+            </div>
+
+            <!-- Campos de SINPE -->
+            <div id="sinpe" class="metodo-pago">
+                <div class="mb-3">
+                    <label class="form-label">Número de Teléfono:</label>
+                    <input type="tel" class="form-control" id="telefono-sinpe" placeholder="Ingrese su número de teléfono">
+                </div>
+            </div>
+        </form>
+
+        <!-- Resumen de Reserva -->
+        <div class="container2">
+            <h2><b>Resumen de Reserva</b></h2>
+            <div class="mb-3">
+                <strong>Nombre:</strong> <span id="nombre-resumen"></span>
+            </div>
+            <div class="mb-3">
+                <strong>Apellido:</strong> <span id="apellido-resumen"></span>
+            </div>
+            <div class="mb-3">
+                <strong>Correo:</strong> <span id="correo-resumen"></span>
+            </div>
+            <div class="mb-3">
+                <strong>Teléfono:</strong> <span id="telefono-resumen"></span>
+            </div>
+            <div class="mb-3">
+                <strong>Método de Pago:</strong> <span id="pago-resumen"></span>
+            </div>
+            <div class="mb-3">
+                <strong>Total:</strong> <span id="total-resumen"></span>
+            </div>
+        </div>
+
+        <!-- Botones de Confirmación y Salir -->
+        <div class="text-center mt-4">
+            <button class="btn btn-success" onclick="confirmarCompra()">Confirmar Compra</button>
+            <a href="index.html" class="btn btn-danger">Salir</a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="container-fluid bg-black text-center p-3 text-bg-danger mt-4">
+        <p class="small">Derechos Reservados - Eventillos CR - Programación 3 (2023) | 
+            <a href="https://www.instagram.com" target="_blank">Instagram</a> | 
+            <a href="https://es-la.facebook.com" target="_blank">Facebook</a> | 
+            <a href="https://twitter.com/home?lang=es" target="_blank">Twitter</a>
+        </p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        let carrito = [];
+
+        function agregaralcarrito(producto, precio) {
+            const cantidad = prompt(`Ingrese la cantidad de boletos de "${producto}" a agregar al carrito:`);
+            if (cantidad === null || cantidad === "" || isNaN(cantidad) || cantidad <= 0) {
+                alert("Cantidad no válida.");
+                return;
+            }
+
+            const subtotal = precio * parseInt(cantidad);
+            carrito.push({ producto, cantidad, subtotal });
+            actualizarCarrito();
+        }
+
+        function eliminarproducto(index) {
+            carrito.splice(index, 1);
+            actualizarCarrito();
+        }
+
+        function actualizarCarrito() {
+            const carritoElement = document.getElementById('carrito');
+            const totalElement = document.getElementById('total');
+            carritoElement.innerHTML = '';
+            let total = 0;
+
+            carrito.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.className = 'list-group-item carrito-item';
+                li.innerHTML = `
+                    ${item.producto} (Cantidad: ${item.cantidad}) - Subtotal: ₡${item.subtotal.toFixed(2)}
+                    <button class="btn btn-danger btn-sm" onclick="eliminarproducto(${index})">Eliminar</button>
+                `;
+                carritoElement.appendChild(li);
+                total += item.subtotal;
+            });
+
+            totalElement.textContent = `Total a pagar: ₡${total.toFixed(2)}`;
+        }
+
+        function mostrarCamposPago() {
+            const metodo = document.getElementById('metodo-pago').value;
+            document.querySelectorAll('.metodo-pago').forEach(div => div.style.display = 'none');
+            if (metodo) {
+                document.getElementById(metodo).style.display = 'block';
+            }
+        }
+
+        function confirmarCompra() {
+            const formulario = document.getElementById('formulario-compra');
+            if (!formulario.checkValidity()) {
+                alert("Por favor, complete todos los campos del formulario.");
+                return;
+            }
+
+            const nombre = document.getElementById('nombre').value;
+            const apellido = document.getElementById('apellido').value;
+            const correo = document.getElementById('correo').value;
+            const telefono = document.getElementById('telefono').value;
+            const metodoPago = document.getElementById('metodo-pago').value;
+            const total = parseFloat(document.getElementById('total').textContent.replace('Total a pagar: ₡', ''));
+
+            // Validar método de pago
+            if (metodoPago === "tarjeta") {
+                const numeroTarjeta = document.getElementById('numero-tarjeta').value;
+                const fechaExpiracion = document.getElementById('fecha-expiracion').value;
+                const cvv = document.getElementById('cvv').value;
+
+                if (!numeroTarjeta || !fechaExpiracion || !cvv) {
+                    alert("Por favor, complete los datos de la tarjeta.");
+                    return;
+                }
+            } else if (metodoPago === "efectivo") {
+                const montoEfectivo = parseFloat(document.getElementById('monto-efectivo').value);
+                if (isNaN(montoEfectivo) || montoEfectivo < total) {
+                    alert("El monto ingresado es insuficiente.");
+                    return;
+                }
+                const vuelto = montoEfectivo - total;
+                document.getElementById('vuelto').textContent = `Vuelto: ₡${vuelto.toFixed(2)}`;
+            } else if (metodoPago === "sinpe") {
+                const telefonoSinpe = document.getElementById('telefono-sinpe').value;
+                if (!telefonoSinpe) {
+                    alert("Por favor, ingrese su número de teléfono para SINPE.");
+                    return;
+                }
+            }
+
+            // Mostrar resumen
+            document.getElementById('nombre-resumen').textContent = nombre;
+            document.getElementById('apellido-resumen').textContent = apellido;
+            document.getElementById('correo-resumen').textContent = correo;
+            document.getElementById('telefono-resumen').textContent = telefono;
+            document.getElementById('pago-resumen').textContent = metodoPago;
+            document.getElementById('total-resumen').textContent = `₡${total.toFixed(2)}`;
+
+            alert("Compra confirmada. ¡Gracias por su reserva!");
+        }
+    </script>
+</body>
+</html>
